@@ -1,0 +1,29 @@
+FROM centos
+
+MAINTAINER vinodd@samanvayfoundation.org
+
+RUN yum install -y \
+       java-1.8.0-openjdk \
+       java-1.8.0-openjdk-devel
+
+ENV JAVA_HOME /etc/alternatives/jre
+
+RUN yum -y install initscripts && yum clean all && yum -y install unzip
+
+VOLUME /tmp
+
+EXPOSE 8021
+
+RUN mkdir /etc/openchs
+
+COPY resources/avni.conf /tmp/avni.conf
+
+COPY resources/avni.sh /tmp/avni.sh
+
+COPY resources/avni-server.rpm /tmp/avni-server.rpm
+
+COPY resources/avni-webapp.zip /tmp/avni-webapp.zip
+
+ENTRYPOINT ["/tmp/avni.sh"]
+
+CMD tail -f /dev/null

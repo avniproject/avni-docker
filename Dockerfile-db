@@ -1,0 +1,5 @@
+FROM postgres:9.6
+
+MAINTAINER vinodd@samanvayfoundation.org
+
+COPY resources/avni.sql /docker-entrypoint-initdb.d
