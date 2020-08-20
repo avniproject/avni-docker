@@ -24,6 +24,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  app:
+    container_name: avni-app
+    image: vind3v/avni-app:3.8
+    privileged: true
+    network_mode: "host"
+    ports:
+      - "5037:5037"
+    depends_on:
+      - server
+
 networks:
   avninet:
     driver: bridge
