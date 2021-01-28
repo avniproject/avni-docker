@@ -30,6 +30,6 @@ All `docker-compose` commands should be run from the directory containing `docke
 
 Commands to build and push docker image
 ```
-docker build -t <repo-name>:<tag> -f <docker-file-path>
+docker build -t <repo-name>:<tag> -f <docker-file-path> .
 docker push <hub-user>/<repo-name>:<tag>
 ```
