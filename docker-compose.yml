@@ -5,6 +5,7 @@ services:
     image: vind3v/avni-server:3.7
     ports:
       - "8021:8021"
+      - "3000:3000"
     depends_on:
       - db
     networks:
@@ -12,7 +13,7 @@ services:
 
   db:
     container_name: avni-db
-    image: vind3v/avni-db:0.1
+    image: vind3v/avni-db:12.3
     ports:
       - "5434:5432"
     environment:
@@ -23,16 +24,6 @@ services:
       - avninet
     volumes:
       - pgdata:/var/lib/postgresql/data
-
-  app:
-    container_name: avni-app
-    image: vind3v/avni-app:3.8
-    privileged: true
-    network_mode: "host"
-    ports:
-      - "5037:5037"
-    depends_on:
-      - server
 
 networks:
   avninet:

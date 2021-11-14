@@ -1,5 +1,7 @@
-FROM postgres:9.6
+FROM postgres:12.3
 
 MAINTAINER vinodd@samanvayfoundation.org
 
 COPY resources/avni.sql /docker-entrypoint-initdb.d
+COPY resources/restore.sh /docker-entrypoint-initdb.d
+COPY resources/data.sql /tmp
